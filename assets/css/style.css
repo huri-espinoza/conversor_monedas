@@ -1,0 +1,29 @@
+body {
+    background: #1f252b;
+    color: white;
+}
+
+.card-custom {
+    background: #636e77;
+    border-radius: 8px;
+    padding: 30px;
+    width: 350px;
+    margin: auto;
+}
+
+.card-custom input, .card-custom select {
+    text-align: center;
+}
+
+.btn-info {
+    width: 100%;
+}
+
+.mensajeError {
+    padding: 20px;
+}
+
+.graph-custom {
+    padding: 20px;
+    width: 100%;
+}
