@@ -27,20 +27,21 @@ const monedas = await getMonedas()
     });;
 
 const actualizarGrafico = async function (moneda) {
-    try {
-        parrafoError.innerHTML = "";
-        const config = await getDatosGrafico(moneda);
-        const chartDOM = document.getElementById("myChart");
-        chartDOM.style.backgroundColor = "white";
-        if (chart !== undefined) chart.destroy();
-        chart = new Chart(chartDOM, config);
-    } catch (error) {
-        parrafoError.innerHTML = error;
-    }
-
+    await getDatosGrafico(moneda)
+        .then(response => {
+            parrafoError.innerHTML = "";
+            const chartDOM = document.getElementById("myChart");
+            chartDOM.style.backgroundColor = "white";
+            if (chart !== undefined) chart.destroy();
+            chart = new Chart(chartDOM, response);
+        })
+        .catch(error => {
+            parrafoError.innerHTML = error;
+        });
 }
 
 actualizarGrafico(monedas[0].tipo);
+
 
 btnBuscar.addEventListener("click", function () {
     let monto = parseFloat(montoInput.value);
